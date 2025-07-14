@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partial/head') %>
+    <title>Detail Area</title>
+    <style></style>
+  </head>
+  <body>
+    <%- include('./partial/nav') %>
+    <div class="container">
+      <h1><%=blogDetails.title %></h1>
+      <p><%=blogDetails.body %></p>
+      <img src="<%= blogDetails.coverImageUrl %>" width="250vh" />
+      <br />
+      <div class="creator">
+        <i>Created By :- <%= blogDetails.createdBy.fullName %></i>
+        <br />
+        <i>Email:- <%= blogDetails.createdBy.email %></i>
+        <br />
+        <img src="<%= blogDetails.createdBy.imageLink %>" width="150vh" />
+        <% if (locals.blogDetails) { %>
+        <div class="comment">
+          <form action="/comment/<%= blogDetails._id %>" method="post">
+            <h3>Comment( <%= cmntUser.length %> )</h3>
+            <input type="text" name="content" placeholder="enter comment" />
+            <input type="submit" value="Send Cmnt" />
+          </form>
+        </div>
+        <% } %> <% cmntUser.forEach(user => { %>
+        <img src="<%= user.createdBy.imageLink %>" width="50vh" />
+        <pre><%= user.createdBy.fullName %> = <%= user.content %></pre>
+        <% }) %>
+      </div>
+    </div>
+    <%- include('./partial/script') %>
+  </body>
+</html>

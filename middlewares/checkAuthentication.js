@@ -3,13 +3,13 @@ const { getTokenData } = require("../service/auth");
 function checkAuthenTication(cookieName) {
   return (req, res, next) => {
     const token = req.cookies[cookieName];
-    console.log("token found = ", token);
-    const userPayload = getTokenData(token);
-    console.log("payload found = ", userPayload);
-    req.validUser = userPayload;
-    if (!userPayload) {
+    try {
+      const userPayload = getTokenData(token);
+      req.validUser = userPayload;
+      return next();
+    } catch (error) {
+     return res.render("signUp");
     }
-    next();
   };
 }
 

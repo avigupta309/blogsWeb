@@ -20,9 +20,12 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
+
+        <% if (locals.userHome) { %>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="/add-blogs">Add Blogs</a>
         </li>
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -31,12 +34,22 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Avinash
+            <%= userHome.fullName %>
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">LogOut</a></li>
+            <li><a class="dropdown-item" href="/logout">LogOut</a></li>
           </ul>
         </li>
+
+        <% } else{%>
+        <li class="nav-item">
+          <a class="nav-link" href="/signIn">Sign In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signUp">Sign Up</a>
+        </li>
+
+        <%}%>
       </ul>
       <form class="d-flex" role="search">
         <input
@@ -51,8 +64,6 @@
   </div>
 </nav>
 
-
-  <% if (locals.errorMsg) { %>
-  <div class="alert alert-danger" role="alert">Password incorrect</div>
-  <% } %>
-
+<% if (locals.errorMsg) { %>
+<div class="alert alert-danger" role="alert">Password incorrect</div>
+<% } %>

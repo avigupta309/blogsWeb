@@ -16,8 +16,9 @@ function createToken(user) {
 function getTokenData(token) {
   try {
     const payLoad = jwt.verify(token, secretKey);
+    return payLoad;
   } catch (error) {
-    return null;
+    throw new Error("nottt");
   }
 }
 

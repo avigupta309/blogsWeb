@@ -11,7 +11,7 @@ async function handleSignUp(req, res) {
     imageLink,
     password,
   });
-  return res.redirect("/");
+  return res.redirect("/signIn");
 }
 async function handleSignIn(req, res) {
   const { email, password } = req.body;
@@ -19,7 +19,6 @@ async function handleSignIn(req, res) {
     const user = await userModel.matchPassword(email, password);
     const token = createToken(user);
     res.cookie("tokenId", token);
-    console.log("created = = = == = =", token);
     return res.status(200).redirect("/");
   } catch (error) {
     res.render("signUp", {

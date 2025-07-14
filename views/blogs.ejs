@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partial/head') %>
+    <title>Add Blogs</title>
+  </head>
+  <body>
+    <%- include('./partial/nav') %>
+    <form action="/blogs" method="post" enctype="multipart/form-data" >
+      <label for="title">Title</label>
+      <input type="text" name="title" placeholder="title" />
+      <br />
+      <br />
+      <label for="body">Body</label>
+      <br />
+      <textarea rows="3" name="body" placeholder="text here"></textarea>
+      <Label for="iamge">Cover Photo</Label>
+      <input type="file" name="coverImageUrl" />
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <%- include('./partial/script') %>
+  </body>
+</html>
