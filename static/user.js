@@ -21,8 +21,6 @@ staticRouter.get(
     const cmntUser = await commentModel
       .find({ blockId: req.params.id })
       .populate("createdBy");
-    console.log(cmntUser);
-    // console.log(user);
     res.render("detail", {
       blogDetails: user,
       validuser: req.validUser,
