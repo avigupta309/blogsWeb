@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 app.use("/blogsUploads/blogsImages", express.static("blogsUploads/blogsImages"));
+app.use(express.static("public"));
 app.use(cookieParser());
 
 connectMongoDB(process.env.MONGO_URL);
