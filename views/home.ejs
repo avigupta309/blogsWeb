@@ -5,36 +5,35 @@
     <title>HOmePage</title>
     <style>
       .grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 20px;
-}
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 20px;
+      }
 
-.cards {
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 10px;
-  background-color: #f8f8f8;
-  text-align: center;
-}
+      .cards {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #f8f8f8;
+        text-align: center;
+      }
 
-.cards img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
+      .cards img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 5px;
+      }
     </style>
   </head>
- <body>
-  <%- include('./partial/nav') %>
-  <h1>Home 1</h1>
+  <body>
+    <%- include('./partial/nav') %>
+    <h1>Home 1</h1>
 
-  <% if (locals.blogs) { %>
-  <div class="grid-container">
-    <% blogs.forEach(userBlogs => { %>
+    <% if (locals.blogs) { %>
+    <div class="grid-container">
+      <% blogs.forEach(userBlogs => { %>
       <div class="cards">
         <strong><%= userBlogs.title %></strong>
         <div class="images">
@@ -43,11 +42,9 @@
         <br />
         <a class="btn btn-primary" href="/blogs/<%= userBlogs.id %>">View</a>
       </div>
-    <% }) %>
-  </div>
-  <% } %>
-
-  <%- include('./partial/script') %>
-</body>
-
+      <% }) %>
+    </div>
+    <% } %>
+    <%- include('./partial/script') %>
+  </body>
 </html>

@@ -6,18 +6,34 @@
   </head>
   <body>
     <%- include('./partial/nav') %>
-    <form action="/blogs" method="post" enctype="multipart/form-data" >
+    <div class="text-bg-warning p-3 text-center">
+      Write Your Blogs Here With Calm And Cool !!
+    </div>
+    <form action="/blogs" method="post" enctype="multipart/form-data">
       <label for="title">Title</label>
-      <input type="text" name="title" placeholder="title" />
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        placeholder="title"
+      />
       <br />
       <br />
       <label for="body">Body</label>
       <br />
-      <textarea rows="3" name="body" placeholder="text here"></textarea>
+      <textarea
+        rows="3"
+        class="form-control"
+        name="body"
+        placeholder="Explain the Blogs here"
+      ></textarea>
       <Label for="iamge">Cover Photo</Label>
       <input type="file" name="coverImageUrl" />
+      <br />
+      <br />
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
     <%- include('./partial/script') %>
   </body>
 </html>

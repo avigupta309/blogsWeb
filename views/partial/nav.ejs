@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar scroll</a>
+    <a class="navbar-brand" href="#">Avi's Blogs</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -18,7 +18,7 @@
         style="--bs-scroll-height: 100px"
       >
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
 
         <% if (locals.userHome) { %>
@@ -51,19 +51,21 @@
 
         <%}%>
       </ul>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
+      <% if (locals.userHome) { %>
+      <div class="pf">
+        <img
+          class="pf"
+          src="<%=userHome.imageLink %>"
+          alt="profile"
+          height="80px"
+          width="80px"
+          style="border-radius: 50%; object-fit: cover"
         />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </div>
+      <% } %>
     </div>
   </div>
 </nav>
-
 <% if (locals.errorMsg) { %>
 <div class="alert alert-danger" role="alert">Password incorrect</div>
 <% } %>
