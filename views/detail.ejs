@@ -8,29 +8,47 @@
   <body>
     <%- include('./partial/nav') %>
     <div class="container">
+      <img src="<%= blogDetails.coverImageUrl %>" width="250vh" />
       <h1><%=blogDetails.title %></h1>
       <p><%=blogDetails.body %></p>
-      <img src="<%= blogDetails.coverImageUrl %>" width="250vh" />
       <br />
       <div class="creator">
         <i>Created By :- <%= blogDetails.createdBy.fullName %></i>
         <br />
         <i>Email:- <%= blogDetails.createdBy.email %></i>
         <br />
-        <img src="<%= blogDetails.createdBy.imageLink %>" width="150vh" />
-        <% if (locals.blogDetails) { %>
-        <div class="comment">
-          <form action="/comment/<%= blogDetails._id %>" method="post">
-            <h3>Comment( <%= cmntUser.length %> )</h3>
-            <input type="text" name="content" placeholder="enter comment" />
-            <input type="submit" value="Send Cmnt" />
-          </form>
-        </div>
-        <% } %> <% cmntUser.forEach(user => { %>
-        <img src="<%= user.createdBy.imageLink %>" width="50vh" />
-        <pre><%= user.createdBy.fullName %> = <%= user.content %></pre>
-        <% }) %>
+        <img src="<%= blogDetails.createdBy.imageLink %>" height="80px" />
+        <br />
+        <br />
       </div>
+    </div>
+    <h3>Comment( <%= cmntUser.length %> )</h3>
+    <%- include('./partial/comment',{ cmntUser }) %>
+    <!-- <% if (locals.blogDetails) { %> <% } %> <% cmntUser.forEach(user => { %>
+    <div
+      class="commentedBy"
+      style="
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+      "
+    >
+      <%- include('./partial/comment', { imageLink: user.createdBy.imageLink,
+      fullName: user.createdBy.fullName ,comment:user.content}) %>
+      <img src="<%= user.createdBy.imageLink %>" width="50vh" />
+      <pre><%= user.createdBy.fullName %> = <%= user.content %></pre>
+    </div>
+    <% }) %> -->
+
+    <div class="comment">
+      <form action="/comment/<%= blogDetails._id %>" method="post">
+        <h2>Write Your Valuable Comment</h2>
+        <input type="text" name="content" placeholder="enter comment" />
+        <input type="submit" value="Send Cmnt" />
+        <br />
+        <br />
+      </form>
     </div>
     <%- include('./partial/script') %>
   </body>

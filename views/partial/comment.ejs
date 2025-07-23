@@ -1,0 +1,29 @@
+<div class="container">
+  <% cmntUser.forEach((user,index) => { %>
+  <div class="card mb-3 w-100">
+    <div class="row g-0 flex-row">
+      <p><%= index+1 %></p>
+      <div
+        class="col-auto d-flex align-items-center justify-content-center p-3"
+      >
+        <img
+          src="<%= user.createdBy.imageLink %>"
+          alt="Profile Image"
+          style="
+            height: 60px;
+            width: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+          "
+        />
+      </div>
+      <div class="col">
+        <div class="card-body">
+          <h5 class="card-title"><%= user.createdBy.fullName %></h5>
+          <p class="card-text"><%= user.content %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>
